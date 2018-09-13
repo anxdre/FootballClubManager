@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Football Club Manager</string>
+    <string name="GET_UPCOMING_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328</string>
+</resources>
