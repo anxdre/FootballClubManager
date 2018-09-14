@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Football Club Manager</string>
     <string name="GET_UPCOMING_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328</string>
+    <string name="GET_LAST_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4328</string>
+    <string name="GET_EVENT_DETAIL">https://www.thesportsdb.com/api/v1/json/1/lookupevent.php?id=</string>
 </resources>
