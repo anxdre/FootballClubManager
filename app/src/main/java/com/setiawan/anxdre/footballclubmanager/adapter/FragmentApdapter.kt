@@ -25,8 +25,8 @@ class FragmentApdapter(mFragment: FragmentManager) : FragmentPagerAdapter(mFragm
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Upcoming Event"
-            else -> "Last Event"
+            0 -> "Last Event"
+            else -> "Upcoming Event"
         }
     }
 }

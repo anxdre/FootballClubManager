@@ -20,13 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/PB_DetailLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="100dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -431,5 +424,12 @@
                 </TableLayout>
             </ScrollView>
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/PB_DetailLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp" />
     </FrameLayout>
 </LinearLayout>
