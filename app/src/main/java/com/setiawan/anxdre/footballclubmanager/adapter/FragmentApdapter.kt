@@ -6,14 +6,15 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.setiawan.anxdre.footballclubmanager.fragments.FragmentLastEvent
 import com.setiawan.anxdre.footballclubmanager.fragments.FragmentUpcomingEvent
 
-class FragmentApdapter(mFragment:FragmentManager):FragmentPagerAdapter(mFragment) {
+class FragmentApdapter(mFragment: FragmentManager) : FragmentPagerAdapter(mFragment) {
     override fun getItem(position: Int): Fragment {
-        return when (position){
+        return when (position) {
             0 -> {
-                FragmentUpcomingEvent()
+                FragmentLastEvent()
             }
-            else ->{
-                    return FragmentLastEvent()
+            else -> {
+                return FragmentUpcomingEvent()
+
             }
         }
     }
@@ -23,7 +24,7 @@ class FragmentApdapter(mFragment:FragmentManager):FragmentPagerAdapter(mFragment
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when (position){
+        return when (position) {
             0 -> "Upcoming Event"
             else -> "Last Event"
         }
