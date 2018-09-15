@@ -17,6 +17,7 @@ import com.setiawan.anxdre.footballclubmanager.adapter.EventAdapter
 import com.setiawan.anxdre.footballclubmanager.data.model.DataEvent
 import kotlinx.android.synthetic.main.fragment_adapter.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.json.JSONObject
 
 class FragmentUpcomingEvent : Fragment() {
@@ -57,7 +58,7 @@ class FragmentUpcomingEvent : Fragment() {
                     }
 
                     override fun onError(anError: ANError?) {
-                        Log.e("_ERROR", anError.toString())
+                        toast("Connection Error")
 
                     }
                 })

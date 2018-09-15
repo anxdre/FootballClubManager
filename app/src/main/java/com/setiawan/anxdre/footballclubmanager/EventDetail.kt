@@ -9,19 +9,10 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import kotlinx.android.synthetic.main.activity_event_detail.*
+import org.jetbrains.anko.toast
 import org.json.JSONObject
 
 class EventDetail : AppCompatActivity() {
-
-    var TitleHome: String = ""
-    var TitleAway: String = ""
-    var ScoreHome: String = ""
-    var ScoreAway: String = ""
-    var ShootsHome: String = ""
-    var ShootsAway: String = ""
-    var GoalsKeeperHome: String = ""
-    var GoalsKeeperAway: String = ""
-    var Rounds: String = ""
     var ImagePath: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,30 +39,27 @@ class EventDetail : AppCompatActivity() {
                         for (i in 0 until jsonArrayEvent.length()) {
                             val jsonObj = jsonArrayEvent.getJSONObject(i)
 
-                            TitleHome = jsonObj.optString("strHomeTeam")
-                            TitleAway = jsonObj.optString("strAwayTeam")
-                            ScoreHome = jsonObj.optString("intHomeScore")
-                            ScoreAway = jsonObj.optString("intAwayScore")
-                            ShootsHome = jsonObj.optString("intHomeShots")
-                            ShootsAway = jsonObj.optString("intAwayShots")
-                            GoalsKeeperHome = jsonObj.optString("strHomeLineupGoalkeeper")
-                            GoalsKeeperAway = jsonObj.optString("strAwayLineupGoalkeeper")
-                            Rounds = jsonObj.optString("intRound")
+                            TV_TitleHome.text = jsonObj.optString("strHomeTeam")
+                            TV_TitleAway.text = jsonObj.optString("strAwayTeam")
+                            TV_ScoreHome.text = jsonObj.optString("intHomeScore")
+                            TV_ScoreAway.text = jsonObj.optString("intAwayScore")
+                            TV_ShootsHome.text = jsonObj.optString("intHomeShots")
+                            TV_ShootsAway.text = jsonObj.optString("intAwayShots")
+                            TV_KeeperHome.text = jsonObj.optString("strHomeLineupGoalkeeper")
+                            TV_KeeperAway.text = jsonObj.optString("strAwayLineupGoalkeeper")
+                            TV_RoundsHome.text = jsonObj.optString("intRound")
+                            TV_RoundsAway.text = jsonObj.optString("intRound")
+                            TV_DefenseHome.text = jsonObj.optString("strHomeLineupDefense")
+                            TV_DefenseAway.text = jsonObj.optString("strAwayLineupDefense")
+                            TV_MiddleHome.text = jsonObj.optString("strHomeLineupMidfield")
+                            TV_MiddleAway.text = jsonObj.optString("strAwayLineupMidfield")
+                            TV_FrontHome.text = jsonObj.optString("strHomeLineupForward")
+                            TV_FrontAway.text = jsonObj.optString("strAwayLineupForward")
                         }
-                        TV_TitleHome.text = TitleHome
-                        TV_TitleAway.text = TitleAway
-                        TV_ScoreHome.text = ScoreHome
-                        TV_ScoreAway.text = ScoreAway
-                        TV_ShootsHome.text = ShootsHome
-                        TV_ShootsAway.text = ShootsAway
-                        TV_SubtituesHome.text = GoalsKeeperHome
-                        TV_SubtituesAway.text = GoalsKeeperAway
-                        TV_RoundsHome.text = Rounds
-                        TV_RoundsAway.text = Rounds
                     }
 
                     override fun onError(anError: ANError?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        toast("Connection Error")
                     }
 
                 })
@@ -92,7 +80,7 @@ class EventDetail : AppCompatActivity() {
                     }
 
                     override fun onError(anError: ANError?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        toast("Connection Error")
                     }
 
                 })

@@ -58,7 +58,7 @@ class FragmentLastEvent : Fragment(){
                     }
 
                     override fun onError(anError: ANError?) {
-                        Log.e("_ERROR", anError.toString())
+                        toast("Coneection Errorz")
                     }
                 })
     }
