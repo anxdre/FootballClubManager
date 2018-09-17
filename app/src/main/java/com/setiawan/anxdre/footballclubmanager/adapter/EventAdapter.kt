@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.setiawan.anxdre.footballclubmanager.R
-import com.setiawan.anxdre.footballclubmanager.data.model.DataEvent
+import com.setiawan.anxdre.footballclubmanager.data.DataEvent
 import kotlinx.android.synthetic.main.list_adapter.view.*
 
 class EventAdapter(val EventList:ArrayList<DataEvent>, val context: Context?, val listener: (DataEvent) -> Unit)
@@ -22,7 +22,7 @@ class EventAdapter(val EventList:ArrayList<DataEvent>, val context: Context?, va
 }
 
 class ViewHolder (view:View):RecyclerView.ViewHolder(view){
-    fun bindItem(items:DataEvent, listener:(DataEvent)->Unit){
+    fun bindItem(items: DataEvent, listener: (DataEvent) -> Unit) {
         itemView.TV_Eventdate.text = items.DateEvent
         itemView.TV_Home.text = items.Home
         itemView.TV_Away.text = items.Away

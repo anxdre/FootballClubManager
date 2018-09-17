@@ -14,7 +14,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.setiawan.anxdre.footballclubmanager.EventDetail
 import com.setiawan.anxdre.footballclubmanager.R
 import com.setiawan.anxdre.footballclubmanager.adapter.EventAdapter
-import com.setiawan.anxdre.footballclubmanager.data.model.DataEvent
+import com.setiawan.anxdre.footballclubmanager.data.DataEvent
 import kotlinx.android.synthetic.main.fragment_adapter.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
