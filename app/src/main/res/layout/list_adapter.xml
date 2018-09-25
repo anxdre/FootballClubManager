@@ -14,7 +14,7 @@
             android:id="@+id/TV_Eventdate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="-"
+            android:text="@string/Unload"
             android:textAlignment="center"
             android:textColor="#d50000"
             android:textSize="16sp" />
@@ -29,9 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:autoSizeMinTextSize="14sp"
                 android:lines="1"
-                android:text="Home"
+                android:text="@string/Home"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -40,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:text="VS"
+                android:text="@string/Versus"
                 android:textAlignment="center"
                 android:textColor="#ffd600"
                 android:textSize="24sp"
@@ -52,8 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:lines="1"
-                android:autoSizeMinTextSize="14sp"
-                android:text="Away"
+                android:text="@string/Away"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />

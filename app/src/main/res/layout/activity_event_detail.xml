@@ -30,10 +30,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="cursive"
-                android:text="English Premier league"
+                android:text="@string/Title_Event"
                 android:textAlignment="center"
                 android:textColor="#ff1744"
-                android:textSize="36dp"
+                android:textSize="36sp"
                 android:textStyle="bold" />
 
             <ScrollView
@@ -64,25 +64,27 @@
                                     android:id="@+id/IV_Home"
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
-                                    android:layout_marginStart="20dp" />
+                                    android:layout_marginStart="20dp"
+                                    android:contentDescription="@string/HomeImageDesc" />
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_margin="20dp"
                                     android:layout_weight="1"
-                                    android:text="VS"
+                                    android:text="@string/Versus"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
-                                    android:textSize="25dp"
+                                    android:textSize="25sp"
                                     android:textStyle="bold" />
 
                                 <ImageView
                                     android:id="@+id/IV_Away"
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
-                                    android:layout_marginEnd="20dp" />
+                                    android:layout_marginEnd="20dp"
+                                    android:contentDescription="@string/AwayImageDesc" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -96,7 +98,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:lines="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textColor="#0077ff"
                                     android:textSize="18sp"
@@ -116,7 +118,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textColor="#0077ff"
                                     android:textSize="18sp"
@@ -140,16 +142,17 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center|top"
-                                android:text="Detail"
+                                android:text="@string/Detail"
                                 android:textAlignment="center"
                                 android:textColor="#d32f2f"
-                                android:textSize="20dp"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="#66000000" />
+                                android:background="#66000000"
+                                android:contentDescription="@string/Separator" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -162,7 +165,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textColor="#f44336"
                                     android:textSize="18sp"
@@ -172,7 +175,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Score"
+                                    android:text="@string/Score"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -182,7 +185,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textColor="#f44336"
                                     android:textSize="18sp"
@@ -200,7 +203,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -208,7 +211,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Rounds"
+                                    android:text="@string/Rounds"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -218,7 +221,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -234,7 +237,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -242,7 +245,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Shoots"
+                                    android:text="@string/Shoots"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -252,7 +255,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -272,16 +275,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Line Up"
+                                android:text="@string/LineUp"
                                 android:textAlignment="center"
                                 android:textColor="#d50000"
-                                android:textSize="20dp"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="#66000000" />
+                                android:background="#66000000"
+                                android:contentDescription="@string/Separator" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -294,7 +298,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -302,7 +306,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Goal Keeper"
+                                    android:text="@string/GoalKeeper"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -312,7 +316,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -328,7 +332,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -336,7 +340,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Defense"
+                                    android:text="@string/Defense"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -346,7 +350,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -362,7 +366,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -370,7 +374,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Middle"
+                                    android:text="@string/Middle"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -380,7 +384,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -396,7 +400,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
 
@@ -404,7 +408,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Attack"
+                                    android:text="@string/Attack"
                                     android:textAlignment="center"
                                     android:textColor="#ffb700"
                                     android:textSize="18sp" />
@@ -414,7 +418,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="-"
+                                    android:text="@string/Unload"
                                     android:textAlignment="center"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -424,12 +428,19 @@
                 </TableLayout>
             </ScrollView>
         </LinearLayout>
-
         <ProgressBar
             android:id="@+id/PB_DetailLoad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="100dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/Fab_AddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_favorite_black_24dp" />
     </FrameLayout>
 </LinearLayout>

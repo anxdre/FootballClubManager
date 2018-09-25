@@ -3,6 +3,7 @@ package com.setiawan.anxdre.footballclubmanager.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.setiawan.anxdre.footballclubmanager.fragments.FragmentFavorite
 import com.setiawan.anxdre.footballclubmanager.fragments.FragmentLastEvent
 import com.setiawan.anxdre.footballclubmanager.fragments.FragmentUpcomingEvent
 
@@ -12,21 +13,25 @@ class FragmentApdapter(mFragment: FragmentManager) : FragmentPagerAdapter(mFragm
             0 -> {
                 FragmentLastEvent()
             }
+            1 -> {
+                FragmentUpcomingEvent()
+            }
             else -> {
-                return FragmentUpcomingEvent()
+                return FragmentFavorite()
 
             }
         }
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> "Last Event"
-            else -> "Upcoming Event"
+            1 -> "Upcoming Event"
+            else -> "Favorite"
         }
     }
 }

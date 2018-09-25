@@ -21,7 +21,7 @@ import org.jetbrains.anko.support.v4.toast
 import org.json.JSONObject
 
 class FragmentUpcomingEvent : Fragment() {
-    val Events = ArrayList<DataEvent>()
+    val mEvents = ArrayList<DataEvent>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         loadFan(getString(R.string.GET_UPCOMING_EVENT))
@@ -39,7 +39,7 @@ class FragmentUpcomingEvent : Fragment() {
                         for (i in 0 until jsonArray.length()) {
                             val jsonObj = jsonArray.getJSONObject(i)
                             Log.e("_VALUE", jsonObj.optString("strEvent"))
-                            Events.add(
+                            mEvents.add(
                                     DataEvent(jsonObj.optString("idEvent")
                                             , jsonObj.optString("strHomeTeam")
                                             , jsonObj.optString("strAwayTeam")
@@ -48,12 +48,13 @@ class FragmentUpcomingEvent : Fragment() {
                                             , jsonObj.optString("dateEvent"))
                             )
                         }
-                        PB_Loading?.visibility = View.INVISIBLE
-                        RV_EventList.layoutManager = LinearLayoutManager(context)
-                        RV_EventList.adapter = EventAdapter(Events, context) {
+                        Pb_Loading?.visibility = View.INVISIBLE
+                        Rv_EventList.layoutManager = LinearLayoutManager(context)
+                        Rv_EventList.adapter = EventAdapter(mEvents, context) {
                             startActivity<EventDetail>("MatchID" to "${it.idEvent}"
                                     , "HomeID" to "${it.HomeID}"
-                                    , "AwayID" to "${it.AwayID}")
+                                    , "AwayID" to "${it.AwayID}"
+                                    , "Date" to "${it.DateEvent}")
                         }
                     }
 

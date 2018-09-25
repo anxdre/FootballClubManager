@@ -9,7 +9,7 @@ import com.setiawan.anxdre.footballclubmanager.R
 import com.setiawan.anxdre.footballclubmanager.data.DataEvent
 import kotlinx.android.synthetic.main.list_adapter.view.*
 
-class EventAdapter(val EventList:ArrayList<DataEvent>, val context: Context?, val listener: (DataEvent) -> Unit)
+class EventAdapter(private val EventList: ArrayList<DataEvent>, private val context: Context?, private val listener: (DataEvent) -> Unit)
     :RecyclerView.Adapter<ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, position: Int)
             =ViewHolder (LayoutInflater.from(context).inflate(R.layout.list_adapter,parent,false))
