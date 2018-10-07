@@ -3,7 +3,6 @@ package com.setiawan.anxdre.footballclubmanager.fragments
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,19 +20,18 @@ class FragmentFavorite : Fragment() {
     private var mFavorites: MutableList<Favorite> = mutableListOf()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_adapter, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         load()
     }
 
-    private fun load() {
+    fun load() {
         context?.database?.use {
             val result = select(Favorite.TABLE_FAVORITE)
             val favorite = result.parseList(classParser<Favorite>())
             mFavorites.addAll(favorite)
-            Log.e("MemberF", mFavorites.toString())
-            Log.e("-ValueM", favorite.toString())
         }
         Pb_Loading.visibility = View.INVISIBLE
         Rv_EventList.layoutManager = LinearLayoutManager(context)

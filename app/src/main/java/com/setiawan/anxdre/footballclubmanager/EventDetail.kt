@@ -3,7 +3,6 @@ package com.setiawan.anxdre.footballclubmanager
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.androidnetworking.AndroidNetworking
@@ -12,6 +11,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.setiawan.anxdre.footballclubmanager.data.Favorite
 import com.setiawan.anxdre.footballclubmanager.data.database
+import com.setiawan.anxdre.footballclubmanager.utils.DownloadImg
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -138,7 +138,7 @@ class EventDetail : AppCompatActivity() {
                 })
     }
 
-    private fun loadFanTeam(URL: String, Image: ImageView) {
+    fun loadFanTeam(URL: String, Image: ImageView) {
         AndroidNetworking.get(URL)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -149,7 +149,8 @@ class EventDetail : AppCompatActivity() {
                             val jsonObj = jsonArrayDetail.getJSONObject(i)
                             mImagePath = jsonObj.optString("strTeamBadge")
                         }
-                        downloadImage(mImagePath, Image)
+                        DownloadImg.getImage(mImagePath, Image)
+                        PB_DetailLoad.visibility = View.INVISIBLE
                     }
 
                     override fun onError(anError: ANError?) {
@@ -159,12 +160,4 @@ class EventDetail : AppCompatActivity() {
                 })
     }
 
-    private fun downloadImage(Url: String, ImgView: ImageView) {
-        Log.e("URL", Url)
-        PB_DetailLoad.visibility = View.VISIBLE
-        com.squareup.picasso.Picasso.get().load(Url).placeholder(R.drawable.ic_landscape_black_24dp)
-                .error(R.drawable.ic_landscape_black_24dp).fit()
-                .centerCrop().into(ImgView)
-        PB_DetailLoad.visibility = View.INVISIBLE
-    }
 }

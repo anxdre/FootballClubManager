@@ -3,7 +3,6 @@ package com.setiawan.anxdre.footballclubmanager.fragments
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class FragmentLastEvent : Fragment(){
         return inflater.inflate(R.layout.fragment_adapter, container, false)
     }
 
-    private fun loadFan(URL: String) {
+    fun loadFan(URL: String) {
         AndroidNetworking.get(URL)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -37,7 +36,6 @@ class FragmentLastEvent : Fragment(){
                         val jsonArray = response.getJSONArray("events")
                         for (i in 0 until jsonArray.length()) {
                             val jsonObj = jsonArray.getJSONObject(i)
-                            Log.e("_VALUE", jsonObj.optString("strEvent"))
                             mEvents.add(
                                     DataEvent(jsonObj.optString("idEvent")
                                             , jsonObj.optString("strHomeTeam")
