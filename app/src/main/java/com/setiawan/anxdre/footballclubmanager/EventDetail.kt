@@ -138,7 +138,7 @@ class EventDetail : AppCompatActivity() {
                 })
     }
 
-    fun loadFanTeam(URL: String, Image: ImageView) {
+    private fun loadFanTeam(URL: String, Image: ImageView) {
         AndroidNetworking.get(URL)
                 .setPriority(Priority.MEDIUM)
                 .build()
