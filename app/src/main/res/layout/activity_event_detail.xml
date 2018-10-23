@@ -26,16 +26,6 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-                android:text="@string/Title_Event"
-                android:textAlignment="center"
-                android:textColor="#ff1744"
-                android:textSize="36sp"
-                android:textStyle="bold" />
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

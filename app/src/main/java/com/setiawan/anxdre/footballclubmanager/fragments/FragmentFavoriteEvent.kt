@@ -9,33 +9,32 @@ import android.view.ViewGroup
 import com.setiawan.anxdre.footballclubmanager.EventDetail
 import com.setiawan.anxdre.footballclubmanager.R
 import com.setiawan.anxdre.footballclubmanager.adapter.FavoriteAdapter
-import com.setiawan.anxdre.footballclubmanager.data.Favorite
+import com.setiawan.anxdre.footballclubmanager.data.FavoriteEvent
 import com.setiawan.anxdre.footballclubmanager.data.database
-import kotlinx.android.synthetic.main.fragment_adapter.*
+import kotlinx.android.synthetic.main.fragment_team_detail_player_list.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.support.v4.startActivity
 
-class FragmentFavorite : Fragment() {
-    private var mFavorites: MutableList<Favorite> = mutableListOf()
+class FragmentFavoriteEvent : Fragment() {
+    private var mFavoriteEvents: MutableList<FavoriteEvent> = mutableListOf()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_adapter, container, false)
-
+        return inflater.inflate(R.layout.fragment_team_detail_player_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         load()
     }
 
-    fun load() {
+    private fun load() {
         context?.database?.use {
-            val result = select(Favorite.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<Favorite>())
-            mFavorites.addAll(favorite)
+            val result = select(FavoriteEvent.TABLE_FAVORITE)
+            val favorite = result.parseList(classParser<FavoriteEvent>())
+            mFavoriteEvents.addAll(favorite)
         }
-        Pb_Loading.visibility = View.INVISIBLE
-        Rv_EventList.layoutManager = LinearLayoutManager(context)
-        Rv_EventList.adapter = FavoriteAdapter(mFavorites, context) {
+        Pb_PlayerListLoad.visibility = View.INVISIBLE
+        Rv_PlayerList.layoutManager = LinearLayoutManager(context)
+        Rv_PlayerList.adapter = FavoriteAdapter(mFavoriteEvents, context) {
             startActivity<EventDetail>("MatchID" to "${it.MatchId}"
                     , "HomeID" to "${it.HomeId}"
                     , "AwayID" to "${it.AwayId}")
@@ -43,7 +42,7 @@ class FragmentFavorite : Fragment() {
     }
 
     override fun onResume() {
-        mFavorites.clear()
+        mFavoriteEvents.clear()
         load()
         super.onResume()
     }

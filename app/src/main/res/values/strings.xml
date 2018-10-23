@@ -1,9 +1,24 @@
 <resources>
     <string name="app_name">Football Club Manager</string>
-    <string name="GET_UPCOMING_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328</string>
-    <string name="GET_LAST_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4328</string>
+    <string name="GET_UPCOMING_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=</string>
+    <string name="GET_LAST_EVENT">https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=</string>
     <string name="GET_EVENT_DETAIL">https://www.thesportsdb.com/api/v1/json/1/lookupevent.php?id=</string>
+
     <string name="GET_IMAGE_BADGE">https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=</string>
+    <string name="GET_DETAIL_TEAM">https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=</string>
+    <string name="GET_DETAIL_PLAYER">https://www.thesportsdb.com/api/v1/json/1/lookupplayer.php?id=</string>
+
+    <string name="GET_TEAM_LIST">https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=</string>
+    <string name="SEARCH_EVENT">https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=</string>
+    <string name="SEARCH_TEAM">https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=</string>
+
+    <string name="GET_LIST_PLAYER">https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id=</string>
+
+    <string-array name="Liga">
+        <item>English Premier League</item>
+        <item>English League Championship</item>
+        <item>Scottish Premier League</item>
+    </string-array>
 
     //XML Resource
     <string name="Title_Event">English Premier league</string>
@@ -23,4 +38,11 @@
     <string name="AwayImageDesc">Away badge Image</string>
     <string name="Away">Away</string>
     <string name="Separator">Separator</string>
+    <string name="match_list">Match List</string>
+    <string name="TeamList">Team List</string>
+    <string name="football_club_manager">FootBall Club Manager</string>
+    <string name="search">Search</string>
+    <string name="team">Team</string>
+    <string name="Weight">Weight</string>
+    <string name="Height">Height</string>
 </resources>

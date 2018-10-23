@@ -18,7 +18,7 @@ import org.junit.runner.RunWith
 class MainMenuTest {
     @Rule
     @JvmField
-    var activityRule = ActivityTestRule(MainMenu::class.java)
+    var activityRule = ActivityTestRule(MatchMenu::class.java)
 
     @Test
     fun testViewPagerBerhaviour() {

@@ -1,8 +1,8 @@
 package com.setiawan.anxdre.footballclubmanager.data
 
-data class Favorite(val id: Long?, val MatchId: String?,
-                    val HomeTitle: String?, val HomeId: String?,
-                    val AwayTitle: String?, val AwayId: String?, val Date: String?) {
+data class FavoriteEvent(val id: Long?, val MatchId: String?,
+                         val HomeTitle: String?, val HomeId: String?,
+                         val AwayTitle: String?, val AwayId: String?, val Date: String?) {
 
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"

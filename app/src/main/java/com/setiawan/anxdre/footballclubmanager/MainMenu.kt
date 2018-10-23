@@ -1,8 +1,10 @@
 package com.setiawan.anxdre.footballclubmanager
-import android.support.v7.app.AppCompatActivity
+
 import android.os.Bundle
-import com.setiawan.anxdre.footballclubmanager.adapter.FragmentApdapter
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main_menu.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class MainMenu : AppCompatActivity() {
 
@@ -10,9 +12,7 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
-        val fragmentAdapter = FragmentApdapter(supportFragmentManager)
-        VP_Main.adapter = fragmentAdapter
-        tabs_main.setupWithViewPager(VP_Main)
+        btn_MatchList.onClick { startActivity<MatchMenu>() }
+        btn_TeamList.onClick { startActivity<TeamMenu>() }
     }
-
 }

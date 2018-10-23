@@ -3,6 +3,7 @@ package com.setiawan.anxdre.footballclubmanager.fragments
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,18 +13,18 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.setiawan.anxdre.footballclubmanager.EventDetail
 import com.setiawan.anxdre.footballclubmanager.R
-import com.setiawan.anxdre.footballclubmanager.adapter.EventAdapter
-import com.setiawan.anxdre.footballclubmanager.data.DataEvent
+import com.setiawan.anxdre.footballclubmanager.TeamDetail
+import com.setiawan.anxdre.footballclubmanager.adapter.TeamAdapter
+import com.setiawan.anxdre.footballclubmanager.data.DataTeam
 import kotlinx.android.synthetic.main.fragment_adapter.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import org.json.JSONObject
 
-class FragmentLastEvent : Fragment() {
-    private val mEvents = ArrayList<DataEvent>()
+class FragmentTeamList : Fragment() {
+    private val mTeam = ArrayList<DataTeam>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_adapter, container, false)
@@ -41,51 +42,47 @@ class FragmentLastEvent : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (position) {
-                    0 -> loadFan(getString(R.string.GET_LAST_EVENT) + "4328")
-                    1 -> loadFan(getString(R.string.GET_LAST_EVENT) + "4329")
-                    2 -> loadFan(getString(R.string.GET_LAST_EVENT) + "4330")
+                    0 -> loadFan(getString(R.string.GET_TEAM_LIST) + "4328")
+                    1 -> loadFan(getString(R.string.GET_TEAM_LIST) + "4329")
+                    2 -> loadFan(getString(R.string.GET_TEAM_LIST) + "4330")
                 }
             }
         })
         btn_search.onClick {
             if (Et_Search.text.isEmpty()) {
-                loadFan(getString(R.string.GET_LAST_EVENT) + "4328")
+                loadFan(getString(R.string.GET_TEAM_LIST) + "4328")
             } else {
                 val query: String?
                 query = Et_Search.text.toString().replace(" ", "_").toLowerCase()
-                searchEvent(getString(R.string.SEARCH_EVENT) + query)
+                searchEvent(getString(R.string.SEARCH_TEAM) + query)
             }
         }
     }
 
     fun loadFan(URL: String) {
         Pb_Loading?.visibility = View.VISIBLE
-        mEvents.clear()
-//        Log.e("_Url", URL)
+        mTeam.clear()
+        Log.e("_Url", URL)
         AndroidNetworking.get(URL)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
-                        val jsonArray = response.getJSONArray("events")
+                        val jsonArray = response.getJSONArray("teams")
                         for (i in 0 until jsonArray.length()) {
                             val jsonObj = jsonArray.getJSONObject(i)
-                            mEvents.add(
-                                    DataEvent(jsonObj.optString("idEvent")
-                                            , jsonObj.optString("strHomeTeam")
-                                            , jsonObj.optString("strAwayTeam")
-                                            , jsonObj.optString("idHomeTeam")
-                                            , jsonObj.optString("idAwayTeam")
-                                            , jsonObj.optString("dateEvent"))
+                            mTeam.add(
+                                    DataTeam(jsonObj.optString("idTeam")
+                                            , jsonObj.optString("strTeam")
+                                            , jsonObj.optString("strTeamBadge"))
                             )
                         }
                         Pb_Loading?.visibility = View.INVISIBLE
-                        Rv_EventList?.layoutManager = LinearLayoutManager(context)
-                        Rv_EventList?.adapter = EventAdapter(mEvents, context) {
-                            startActivity<EventDetail>("MatchID" to "${it.idEvent}"
-                                    , "HomeID" to "${it.HomeID}"
-                                    , "AwayID" to "${it.AwayID}"
-                                    , "Date" to "${it.DateEvent}")
+                        Rv_EventList.layoutManager = LinearLayoutManager(context)
+                        Rv_EventList.adapter = TeamAdapter(mTeam, context) {
+                            startActivity<TeamDetail>("TeamId" to it.Id
+                                    , "BadgePath" to it.Badge
+                                    , "Name" to it.Name)
                         }
                     }
 
@@ -95,39 +92,35 @@ class FragmentLastEvent : Fragment() {
                 })
     }
 
-    fun searchEvent(URL: String) {
+    private fun searchEvent(URL: String) {
         Pb_Loading?.visibility = View.VISIBLE
-        mEvents.clear()
-//        Log.e("_Url", URL)
+        mTeam.clear()
+        Log.e("_Url", URL)
         AndroidNetworking.get(URL)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
-                        if (response.isNull("event")) {
+                        if (response.isNull("teams")) {
                             toast("Data Is Empty")
-                            loadFan(getString(R.string.GET_LAST_EVENT) + "4328")
+                            loadFan(getString(R.string.GET_TEAM_LIST) + "4328")
                             Pb_Loading?.visibility = View.INVISIBLE
                         } else {
-                            val jsonArray = response.getJSONArray("event")
+                            val jsonArray = response.getJSONArray("teams")
                             for (i in 0 until jsonArray.length()) {
                                 val jsonObj = jsonArray.getJSONObject(i)
-                                mEvents.add(
-                                        DataEvent(jsonObj.optString("idEvent")
-                                                , jsonObj.optString("strHomeTeam")
-                                                , jsonObj.optString("strAwayTeam")
-                                                , jsonObj.optString("idHomeTeam")
-                                                , jsonObj.optString("idAwayTeam")
-                                                , jsonObj.optString("dateEvent"))
+                                mTeam.add(
+                                        DataTeam(jsonObj?.optString("idTeam")
+                                                , jsonObj?.optString("strTeam")
+                                                , jsonObj?.optString("strTeamBadge"))
                                 )
                             }
                             Pb_Loading?.visibility = View.INVISIBLE
                             Rv_EventList.layoutManager = LinearLayoutManager(context)
-                            Rv_EventList.adapter = EventAdapter(mEvents, context) {
-                                startActivity<EventDetail>("MatchID" to "${it.idEvent}"
-                                        , "HomeID" to "${it.HomeID}"
-                                        , "AwayID" to "${it.AwayID}"
-                                        , "Date" to "${it.DateEvent}")
+                            Rv_EventList.adapter = TeamAdapter(mTeam, context) {
+                                startActivity<TeamDetail>("TeamId" to it.Id
+                                        , "BadgePath" to it.Badge
+                                        , "Name" to it.Name)
                             }
                         }
                     }

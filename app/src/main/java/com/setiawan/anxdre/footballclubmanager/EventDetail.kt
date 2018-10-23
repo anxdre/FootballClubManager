@@ -9,7 +9,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.setiawan.anxdre.footballclubmanager.data.Favorite
+import com.setiawan.anxdre.footballclubmanager.data.FavoriteEvent
 import com.setiawan.anxdre.footballclubmanager.data.database
 import com.setiawan.anxdre.footballclubmanager.utils.DownloadImg
 import kotlinx.android.synthetic.main.activity_event_detail.*
@@ -32,14 +32,12 @@ class EventDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_detail)
-
-        //inisialisasi data
-        val matchId: String = intent.getStringExtra("MatchID")
+        
         val homeId: String = intent.getStringExtra("HomeID")
         val awayId: String = intent.getStringExtra("AwayID")
         val date: String? = intent.getStringExtra("Date")
 
-        loadFanDetail(getString(R.string.GET_EVENT_DETAIL) + matchId)
+        loadFanDetail(getString(R.string.GET_EVENT_DETAIL) + id)
         loadFanTeam(getString(R.string.GET_IMAGE_BADGE) + homeId, IV_Home)
         loadFanTeam(getString(R.string.GET_IMAGE_BADGE) + awayId, IV_Away)
 
@@ -47,21 +45,19 @@ class EventDetail : AppCompatActivity() {
         setFavorite()
 
         Fab_AddButton.setOnClickListener {
-            //
             if (mIsFavorite) {
                 removeFromFavorite()
                 finish()
             } else {
                 database.use {
-                    insert(Favorite.TABLE_FAVORITE,
-                            Favorite.MATCH_ID to matchId,
-                            Favorite.HOME_ID to homeId,
-                            Favorite.HOMETITLE to mHomeTitle,
-                            Favorite.AWAY_ID to awayId,
-                            Favorite.AWAYTITLE to mAwayTitle,
-                            Favorite.DATE to date)
-                    toast("Added To Favorite")
-//                    Fab_AddButton.setImageResource(R.drawable.ic_delete_forever_black_24dp)
+                    insert(FavoriteEvent.TABLE_FAVORITE,
+                            FavoriteEvent.MATCH_ID to id,
+                            FavoriteEvent.HOME_ID to homeId,
+                            FavoriteEvent.HOMETITLE to mHomeTitle,
+                            FavoriteEvent.AWAY_ID to awayId,
+                            FavoriteEvent.AWAYTITLE to mAwayTitle,
+                            FavoriteEvent.DATE to date)
+                    toast("Added To FavoriteEvent")
                     finish()
                 }
                 mIsFavorite = !mIsFavorite
@@ -73,10 +69,10 @@ class EventDetail : AppCompatActivity() {
 
     private fun favoriteState() {
         database.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavoriteEvent.TABLE_FAVORITE)
                     .whereArgs("(MATCH_ID = {id})",
                             "id" to id)
-            val favorite = result.parseList(classParser<Favorite>())
+            val favorite = result.parseList(classParser<FavoriteEvent>())
             if (!favorite.isEmpty()) mIsFavorite = true
         }
     }
@@ -84,10 +80,10 @@ class EventDetail : AppCompatActivity() {
     private fun removeFromFavorite() {
         try {
             database.use {
-                delete(Favorite.TABLE_FAVORITE, "(MATCH_ID = {id})",
+                delete(FavoriteEvent.TABLE_FAVORITE, "(MATCH_ID = {id})",
                         "id" to id)
             }
-            toast("Deleted From Favorite")
+            toast("Deleted From FavoriteEvent")
         } catch (e: SQLiteConstraintException) {
             toast(e.toString())
         }
