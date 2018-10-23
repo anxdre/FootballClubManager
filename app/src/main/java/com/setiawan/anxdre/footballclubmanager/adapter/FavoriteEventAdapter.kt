@@ -6,23 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.setiawan.anxdre.footballclubmanager.R
-import com.setiawan.anxdre.footballclubmanager.data.Favorite
+import com.setiawan.anxdre.footballclubmanager.data.FavoriteEvent
 import kotlinx.android.synthetic.main.list_adapter.view.*
 
-class FavoriteAdapter(private val FavoriteList: List<Favorite>, private val context: Context?, private val listener: (Favorite) -> Unit)
+class FavoriteAdapter(private val favoriteEventList: List<FavoriteEvent>, private val context: Context?, private val listener: (FavoriteEvent) -> Unit)
     : RecyclerView.Adapter<FavoriteHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, position: Int) = FavoriteHolder(LayoutInflater.from(context).inflate(R.layout.list_adapter, parent, false))
 
     override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
-        holder.bindItem(FavoriteList[position], listener)
+        holder.bindItem(favoriteEventList[position], listener)
     }
 
-    override fun getItemCount(): Int = FavoriteList.size
+    override fun getItemCount(): Int = favoriteEventList.size
 
 }
 
 class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bindItem(items: Favorite, listener: (Favorite) -> Unit) {
+    fun bindItem(items: FavoriteEvent, listener: (FavoriteEvent) -> Unit) {
         itemView.TV_Home.text = items.HomeTitle
         itemView.TV_Away.text = items.AwayTitle
         itemView.TV_Eventdate.text = items.Date
